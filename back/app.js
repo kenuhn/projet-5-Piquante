@@ -1,10 +1,12 @@
-const express = require ('express');
-const mongoose = require('mongoose');
-const userRoutes = require('./routes/user');
+const express      = require ('express');
+const mongoose     = require('mongoose');
+const userRoutes   = require('./routes/user');
+const saucesRoutes = require('./routes/sauce');
+const path         = require('path');
 const app = express();
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/API-P6",
+mongoose.connect("mongodb+srv://kenuhn:2001pspalex@cluster0.c0q0q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }, 
     (err) => {
         if (!err){
@@ -21,6 +23,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next()
   });
-  app.use(express.json());
+app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/api/auth/', userRoutes);
+app.use('/api/sauces', saucesRoutes);
 module.exports = app
