@@ -1,0 +1,1 @@
+Pour lancer le serveur du backend tapez la commande "nodemon server".
