@@ -2,6 +2,7 @@ const express      = require ('express');
 const mongoose     = require('mongoose');
 const hpp = require('hpp');
 const helmet       = require('helmet');
+const nocache      = require('nocache')
 const path         = require('path');
 require('dotenv').config();
 
@@ -25,6 +26,8 @@ app.use((req, res, next) => {
     next()
   });
 app.use(express.json());
+app.use(hpp())
+app.use(nocache())
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth/', userRoutes);
 app.use('/api/sauces', saucesRoutes);

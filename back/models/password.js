@@ -12,14 +12,4 @@ schema
 .has().not().spaces()                           // Should not have spaces
 .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
 
-module.exports = (req,res,next)=> {
-    if (schema.validate(req.body.password)){
-        console.log('password valide')
-        next();
-    }
-    else{
-        return res
-        .status(400)
-        .json({error:`le mot de passe ne correspond au schema passsord${schema.validate('req.body.password', { list: true })}` })
-    }
-}
+module.exports = schema
