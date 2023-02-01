@@ -1,4 +1,4 @@
-# Projet 6 open Classroom pour lancer le projet :
+# Projet 6 Piquante:
 
 
 Dans ce projet je devais implémenter toute la partie back-end d'une application de création de sauce.
